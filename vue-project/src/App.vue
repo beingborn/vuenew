@@ -9,7 +9,7 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container />
+  <Container :PostData = "PostData"/>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -22,13 +22,22 @@
 <script>
 
 import Container from './components/Container.vue'
-
+import PostData from './assets/postData.js'
 
 export default {
   name : 'App',
   components : {
     Container : Container
-  }
+  },
+  data() {
+    return {
+      PostData : PostData
+    }
+  },
+  methods : {
+
+  },
+
 }
 </script>
 

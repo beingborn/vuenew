@@ -1,17 +1,21 @@
 <template>
-
-
   <div>
-    <h2>안녕</h2>
-    <Post/>
-    <Post/>
-    <Post/>
+    <Post :PostData ='PostData[i]' v-for="(post,i) in PostData" :key="i"/>
   </div>
 </template>
 
 <script>
-export default {
 
+import Post from './Post.vue'
+
+export default {
+  name: 'Container',
+  components : {
+    Post : Post
+  },
+  props: {
+    PostData : Array,
+  },
 }
 </script>
 
