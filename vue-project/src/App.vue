@@ -10,6 +10,7 @@
   </div>
 
   <Container :PostData = "PostData"/>
+  <button @click="more()">데이터 가져오기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -23,6 +24,7 @@
 
 import Container from './components/Container.vue'
 import PostData from './assets/postData.js'
+import axios from 'axios'
 
 export default {
   name : 'App',
@@ -31,13 +33,22 @@ export default {
   },
   data() {
     return {
-      PostData : PostData
+      PostData : PostData,
+      moreCount : 0,
     }
   },
   methods : {
-
+    more(){
+      axios.get(`https://codingapple1.github.io/vue/more${this.moreCount}.json`)
+        .then(res => {
+        this.PostData.unshift(res.data)
+        this.moreCount++
+      })
+      .catch((res)=> {
+        console.log('실패' , res)
+      })
+    }
   },
-
 }
 </script>
 
